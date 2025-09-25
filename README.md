@@ -2,6 +2,12 @@
 
 A universal browser fingerprinting solution based on **extensive research and analysis** of device characteristics across different browsers and webviews. This project represents a comprehensive study of browser APIs and parameters to identify the most stable and reliable fingerprinting data.
 
+## 🚀 Live Demo
+
+**Try it now:** [https://dmytropoltavskyi.github.io/fingerprint/](https://dmytropoltavskyi.github.io/fingerprint/)
+
+Test the fingerprinting across different browsers and devices to see the consistent results!
+
 ## Research Foundation
 
 This project is the result of **thorough investigation** into browser fingerprinting techniques. Every parameter has been:
@@ -78,6 +84,12 @@ Through **extensive testing and analysis**, the following parameters were **inte
 > **Research Note**: Every excluded parameter was tested across multiple browser environments and showed significant variation that would compromise the universal identification goal.
 
 ## Usage
+
+### Online Demo
+
+Visit the **live demo**: [https://dmytropoltavskyi.github.io/fingerprint/](https://dmytropoltavskyi.github.io/fingerprint/)
+
+### Local Usage
 
 1. Open `index.html` in any modern web browser or webview
 2. The universal fingerprint will be automatically generated and displayed in JSON format
