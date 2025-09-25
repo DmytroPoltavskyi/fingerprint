@@ -5,6 +5,7 @@
 ## What You'll See
 
 The demo will automatically:
+
 1. **Generate your device fingerprint** using 10 stable parameters
 2. **Display the data in JSON format** for easy reading
 3. **Provide a copy button** to export the fingerprint data
@@ -14,19 +15,21 @@ The demo will automatically:
 To see the universal compatibility in action:
 
 1. **Open the demo in different browsers** on the same device:
+
    - Chrome
-   - Firefox  
+   - Firefox
    - Safari
    - Edge
    - Mobile browsers
 
-2. **Compare the results** - they should be identical across all browsers
+2. **Compare the results** - they should be identical across all browsers on the same device
 
-3. **Test in webviews** - mobile apps, embedded browsers, etc.
+3. **Test in webviews** - mobile apps, embedded browsers, etc. on the same device
 
 ## Expected Results
 
 You should see consistent fingerprint data like:
+
 ```json
 {
   "colorDepth": 24,
@@ -45,9 +48,10 @@ You should see consistent fingerprint data like:
 ## Integration Example
 
 Use the fingerprint data in your applications:
+
 ```javascript
 // Copy the collectEnvSimple function from the demo
 const fingerprint = collectEnvSimple();
 const fingerprintHash = btoa(JSON.stringify(fingerprint));
-console.log('Device ID:', fingerprintHash);
+console.log("Device ID:", fingerprintHash);
 ```

@@ -1,12 +1,12 @@
 # Fingerprint
 
-A universal browser fingerprinting solution based on **extensive research and analysis** of device characteristics across different browsers and webviews. This project represents a comprehensive study of browser APIs and parameters to identify the most stable and reliable fingerprinting data.
+A universal browser fingerprinting solution based on **extensive research and analysis** of device characteristics that remain consistent across different browsers and webviews on the same device. This project represents a comprehensive study of browser APIs and parameters to identify the most stable and reliable fingerprinting data.
 
 ## 🚀 Live Demo
 
 **Try it now:** [https://dmytropoltavskyi.github.io/fingerprint/](https://dmytropoltavskyi.github.io/fingerprint/)
 
-Test the fingerprinting across different browsers and devices to see the consistent results!
+Test the fingerprinting across different browsers on the same device to see the identical results!
 
 ## Research Foundation
 
@@ -124,15 +124,15 @@ This project represents **months of systematic research** into browser fingerpri
 - **Statistical analysis** of parameter stability and consistency
 - **Documentation** of cross-browser behavior patterns
 
-### **Multi-Environment Validation**
+### **Multi-Browser Validation**
 
-The selected parameters have been **rigorously tested** and produce **identical results** across:
+The selected parameters have been **rigorously tested** and produce **identical results** across different browsers on the same device:
 
-- **Desktop Browsers**: Chrome, Firefox, Safari, Edge, Opera
-- **Mobile Browsers**: Chrome Mobile, Safari Mobile, Samsung Internet, Firefox Mobile
-- **WebViews**: Android WebView, iOS WKWebView, Electron apps
-- **Embedded Browsers**: In-app browsers, social media browsers
-- **Different OS Versions**: Windows, macOS, Linux, iOS, Android
+- **Desktop Browsers**: Chrome, Firefox, Safari, Edge, Opera (on the same desktop)
+- **Mobile Browsers**: Chrome Mobile, Safari Mobile, Samsung Internet, Firefox Mobile (on the same mobile device)
+- **WebViews**: Android WebView, iOS WKWebView, Electron apps (on the same device)
+- **Embedded Browsers**: In-app browsers, social media browsers (on the same device)
+- **Browser Updates**: Consistent results across browser version updates on the same device
 
 ### **Stability Verification**
 
