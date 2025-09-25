@@ -48,11 +48,15 @@ After **comprehensive analysis of all available browser APIs and characteristics
 **Regional & Locale** _(System-level, cross-browser stable)_
 
 - **Timezone**: User's timezone - _system setting, identical across all browsers_
-- **DateTime Locale**: Date/time formatting locale - _OS-level configuration_
 
 **Display Capabilities** _(Hardware-based characteristics)_
 
 - **Color Depth**: Screen color depth or pixel depth - _display hardware specification_
+
+**Accessibility Preferences** _(System-level settings, cross-browser consistent)_
+
+- **Reduced Motion**: User's motion preference setting - _OS-level accessibility setting_
+- **Reduced Transparency**: User's transparency preference setting - _system accessibility configuration_
 
 ### ❌ Excluded Parameters (Research-Identified Issues)
 
@@ -60,7 +64,7 @@ Through **extensive testing and analysis**, the following parameters were **inte
 
 - **Language Preferences**: Can differ between browser settings and system locale
 - **Theme Preferences**: Browser-dependent implementation varies significantly
-- **Motion/Transparency Preferences**: Browser-specific accessibility features with inconsistent APIs
+- **DateTime Locale**: Can vary between browser and system settings in some environments
 - **User Agent**: Easily spoofed and increasingly standardized across browsers
 - **Plugins/Extensions**: Browser-specific and privacy-restricted in modern browsers
 
