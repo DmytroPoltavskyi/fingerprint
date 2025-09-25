@@ -37,36 +37,43 @@ After **comprehensive analysis of all available browser APIs and characteristics
 
 ### ✅ Included Parameters (Research-Validated)
 
+The following parameters are **actively collected** and included in the fingerprint:
+
 **Hardware & System** _(Proven stable across all environments)_
 
-- **Screen Dimensions**: Physical screen width and height - _consistently identical across browsers_
-- **Device Pixel Ratio**: Display density ratio - _hardware-based, browser-independent_
-- **Hardware Concurrency**: Number of logical processors - _system-level characteristic_
-- **Platform**: Operating system platform identifier - _OS-level data, browser-agnostic_
-- **Max Touch Points**: Maximum simultaneous touch points - _hardware capability, universally consistent_
+- **Screen Dimensions**: Physical screen width and height (`screenWidth`, `screenHeight`) - _consistently identical across browsers_
+- **Device Pixel Ratio**: Display density ratio (`dpr`) - _hardware-based, browser-independent_
+- **Hardware Concurrency**: Number of logical processors (`hardwareConcurrency`) - _system-level characteristic_
+- **Platform**: Operating system platform identifier (`platform`) - _OS-level data, browser-agnostic_
+- **Max Touch Points**: Maximum simultaneous touch points (`maxTouchPoints`) - _hardware capability, universally consistent_
 
 **Regional & Locale** _(System-level, cross-browser stable)_
 
-- **Timezone**: User's timezone - _system setting, identical across all browsers_
+- **Timezone**: User's timezone (`timezone`) - _system setting, identical across all browsers_
 
 **Display Capabilities** _(Hardware-based characteristics)_
 
-- **Color Depth**: Screen color depth or pixel depth - _display hardware specification_
+- **Color Depth**: Screen color depth or pixel depth (`colorDepth`) - _display hardware specification_
 
 **Accessibility Preferences** _(System-level settings, cross-browser consistent)_
 
-- **Reduced Motion**: User's motion preference setting - _OS-level accessibility setting_
-- **Reduced Transparency**: User's transparency preference setting - _system accessibility configuration_
+- **Reduced Motion**: User's motion preference setting (`reducedMotion`) - _OS-level accessibility setting_
+- **Reduced Transparency**: User's transparency preference setting (`reducedTransparency`) - _system accessibility configuration_
 
 ### ❌ Excluded Parameters (Research-Identified Issues)
 
-Through **extensive testing and analysis**, the following parameters were **intentionally excluded** due to cross-browser inconsistencies:
+Through **extensive testing and analysis**, the following parameters were **intentionally excluded** and are commented out in the code due to cross-browser inconsistencies:
 
-- **Language Preferences**: Can differ between browser settings and system locale
-- **Theme Preferences**: Browser-dependent implementation varies significantly
-- **DateTime Locale**: Can vary between browser and system settings in some environments
-- **User Agent**: Easily spoofed and increasingly standardized across browsers
-- **Plugins/Extensions**: Browser-specific and privacy-restricted in modern browsers
+- **Language Preferences** (`languages`) - Can differ between browser settings and system locale
+- **Theme Preferences** (`theme`) - Browser-dependent implementation varies significantly
+- **DateTime Locale** (`dateTimeLocale`) - Can vary between browser and system settings in some environments
+
+**Additional parameters not implemented:**
+
+- **User Agent** - Easily spoofed and increasingly standardized across browsers
+- **Plugins/Extensions** - Browser-specific and privacy-restricted in modern browsers
+- **Canvas/WebGL fingerprinting** - Can be blocked by privacy tools and varies by graphics drivers
+- **Audio fingerprinting** - Inconsistent across different audio hardware configurations
 
 > **Research Note**: Every excluded parameter was tested across multiple browser environments and showed significant variation that would compromise the universal identification goal.
 
