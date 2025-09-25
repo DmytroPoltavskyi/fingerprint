@@ -32,7 +32,6 @@ You should see consistent fingerprint data like:
 
 ```json
 {
-  "colorDepth": 24,
   "screenWidth": 1920,
   "screenHeight": 1080,
   "dpr": 1,

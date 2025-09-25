@@ -57,10 +57,6 @@ The following parameters are **actively collected** and included in the fingerpr
 
 - **Timezone**: User's timezone (`timezone`) - _system setting, identical across all browsers_
 
-**Display Capabilities** _(Hardware-based characteristics)_
-
-- **Color Depth**: Screen color depth or pixel depth (`colorDepth`) - _display hardware specification_
-
 **Accessibility Preferences** _(System-level settings, cross-browser consistent)_
 
 - **Reduced Motion**: User's motion preference setting (`reducedMotion`) - _OS-level accessibility setting_
@@ -73,6 +69,7 @@ Through **extensive testing and analysis**, the following parameters were **inte
 - **Language Preferences** (`languages`) - Can differ between browser settings and system locale
 - **Theme Preferences** (`theme`) - Browser-dependent implementation varies significantly
 - **DateTime Locale** (`dateTimeLocale`) - Can vary between browser and system settings in some environments
+- **Color Depth** (`colorDepth`) - Chrome reports 30-bit on wide gamut displays while Safari normalizes to 24-bit
 
 **Additional parameters not implemented:**
 
