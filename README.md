@@ -136,3 +136,15 @@ The `collectEnvSimple()` function can be easily integrated into any web applicat
 const fingerprint = collectEnvSimple();
 console.log(JSON.stringify(fingerprint, null, 2));
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+**Dmitriy Poltavskiy** - _Research and Development_
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
