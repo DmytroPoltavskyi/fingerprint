@@ -1,326 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fingerprint Collector</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fingerprint</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
 
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-        }
+      .container {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-height: 100%;
+        max-width: 800px;
+        width: 100%;
+        text-align: center;
+      }
 
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+        font-weight: 300;
+      }
+
+      .fingerprint-display {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 30px;
+        border: 2px solid #e9ecef;
+        text-align: left;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+
+      .fingerprint-json {
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #333;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .copy-button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        margin-top: 20px;
+      }
+
+      .copy-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+      }
+
+      .copy-button:active {
+        transform: translateY(0);
+      }
+
+      .copy-feedback {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 500;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .copy-feedback.success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        opacity: 1;
+      }
+
+      .copy-feedback.error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        opacity: 1;
+      }
+
+      .generate-button {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+      }
+
+      .generate-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 16px rgba(40, 167, 69, 0.3);
+      }
+
+      @media (max-width: 420px) {
         h1 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-            font-weight: 300;
+          margin-bottom: 15px;
         }
 
         .fingerprint-display {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            border: 2px solid #e9ecef;
-            text-align: left;
-        }
-
-        .fingerprint-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .fingerprint-item:last-child {
-            border-bottom: none;
-        }
-
-        .fingerprint-label {
-            font-weight: 600;
-            color: #495057;
-            min-width: 180px;
-            text-align: left;
-        }
-
-        .fingerprint-value {
-            color: #6c757d;
-            font-family: 'Courier New', monospace;
-            background: #fff;
-            padding: 4px 8px;
-            border-radius: 4px;
-            border: 1px solid #dee2e6;
-            flex: 1;
-            margin-left: 15px;
-            word-break: break-all;
+          padding: 15px;
+          margin-bottom: 15px;
         }
 
         .copy-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-            margin-top: 20px;
+          margin-top: 0;
+
+          padding: 8px 15px;
+
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
         }
 
-        .copy-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        h1 {
+          font-size: 2rem;
         }
 
-        .copy-button:active {
-            transform: translateY(0);
+        .fingerprint-json {
+          font-size: 12px;
+          padding: 15px;
         }
-
-        .copy-feedback {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 500;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .copy-feedback.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            opacity: 1;
-        }
-
-        .copy-feedback.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            opacity: 1;
-        }
-
-        .generate-button {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        .generate-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .fingerprint-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-
-            .fingerprint-label {
-                min-width: auto;
-            }
-
-            .fingerprint-value {
-                margin-left: 0;
-                width: 100%;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>🔍 Browser Fingerprint</h1>
-        
-        <button class="generate-button" onclick="generateFingerprint()">
-            Generate Fingerprint
-        </button>
+      <h1>🔍 Browser Fingerprint</h1>
 
-        <div id="fingerprintDisplay" class="fingerprint-display" style="display: none;">
-            <!-- Fingerprint data will be displayed here -->
-        </div>
+      <button class="generate-button" onclick="generateFingerprint()">
+        Generate Fingerprint
+      </button>
 
-        <button class="copy-button" onclick="copyFingerprint()" style="display: none;" id="copyButton">
-            📋 Copy Fingerprint
-        </button>
+      <div
+        id="fingerprintDisplay"
+        class="fingerprint-display"
+        style="display: none"
+      >
+        <!-- Fingerprint data will be displayed here -->
+      </div>
 
-        <div id="copyFeedback" class="copy-feedback"></div>
+      <button
+        class="copy-button"
+        onclick="copyFingerprint()"
+        style="display: none"
+        id="copyButton"
+      >
+        📋 Copy Fingerprint
+      </button>
+
+      <div id="copyFeedback" class="copy-feedback"></div>
     </div>
 
     <script>
-        let currentFingerprint = null;
+      let currentFingerprint = null;
 
-        function collectEnvSimple() {
-            const languages = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toString();
+      function collectEnvSimple() {
+        // const languages = (
+        //   navigator.language ||
+        //   (navigator.languages && navigator.languages[0]) ||
+        //   ""
+        // ).toString();
 
-            const colorDepth =
-                (typeof screen !== 'undefined' && (screen.colorDepth || screen.pixelDepth)) || null;
+        const colorDepth =
+          (typeof screen !== "undefined" &&
+            (screen.colorDepth || screen.pixelDepth)) ||
+          null;
 
-            const screenWidth  = (typeof screen !== 'undefined' && screen.width)  ? screen.width  : 0;
-            const screenHeight = (typeof screen !== 'undefined' && screen.height) ? screen.height : 0;
+        const screenWidth =
+          typeof screen !== "undefined" && screen.width ? screen.width : 0;
+        const screenHeight =
+          typeof screen !== "undefined" && screen.height ? screen.height : 0;
 
-            const dpr = (typeof window !== 'undefined' && window.devicePixelRatio) ? window.devicePixelRatio : 1;
+        const dpr =
+          typeof window !== "undefined" && window.devicePixelRatio
+            ? window.devicePixelRatio
+            : 1;
 
-            const hardwareConcurrency =
-                (typeof navigator.hardwareConcurrency === 'number') ? navigator.hardwareConcurrency : null;
+        const hardwareConcurrency =
+          typeof navigator.hardwareConcurrency === "number"
+            ? navigator.hardwareConcurrency
+            : null;
 
-            const timezone = (() => {
-                try { return Intl.DateTimeFormat().resolvedOptions().timeZone || null; }
-                catch { return null; }
-            })();
+        const timezone = (() => {
+          try {
+            return Intl.DateTimeFormat().resolvedOptions().timeZone || null;
+          } catch {
+            return null;
+          }
+        })();
 
-            const platform = navigator.platform || (navigator.userAgentData && navigator.userAgentData.platform) || null;
+        const platform =
+          navigator.platform ||
+          (navigator.userAgentData && navigator.userAgentData.platform) ||
+          null;
 
-            const maxTouchPoints = (typeof navigator.maxTouchPoints === 'number') ? navigator.maxTouchPoints : 0;
+        const maxTouchPoints =
+          typeof navigator.maxTouchPoints === "number"
+            ? navigator.maxTouchPoints
+            : 0;
 
-            const reducedMotion = (typeof matchMedia === 'function')
-                ? matchMedia('(prefers-reduced-motion: reduce)').matches
-                : false;
+        const reducedMotion =
+          typeof matchMedia === "function"
+            ? matchMedia("(prefers-reduced-motion: reduce)").matches
+            : false;
 
-            const reducedTransparency = (typeof matchMedia === 'function')
-                ? matchMedia('(prefers-reduced-transparency: reduce)').matches
-                : false;
+        const reducedTransparency =
+          typeof matchMedia === "function"
+            ? matchMedia("(prefers-reduced-transparency: reduce)").matches
+            : false;
 
-            const dateTimeLocale = (() => {
-                try { return Intl.DateTimeFormat().resolvedOptions().locale || null; }
-                catch { return null; }
-            })();
+        // const dateTimeLocale = (() => {
+        //   try {
+        //     return Intl.DateTimeFormat().resolvedOptions().locale || null;
+        //   } catch {
+        //     return null;
+        //   }
+        // })();
 
-            const theme = (typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches)
-                ? 'dark'
-                : ((typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'no-preference');
+        // const theme =
+        //   typeof matchMedia === "function" &&
+        //   matchMedia("(prefers-color-scheme: dark)").matches
+        //     ? "dark"
+        //     : typeof matchMedia === "function" &&
+        //       matchMedia("(prefers-color-scheme: light)").matches
+        //     ? "light"
+        //     : "no-preference";
 
-            return {
-                languages,
-                colorDepth,
-                screenWidth,
-                screenHeight,
-                dpr,
-                hardwareConcurrency,
-                timezone,
-                platform,
-                maxTouchPoints,
-                reducedMotion,
-                reducedTransparency,
-                dateTimeLocale,
-                theme
-            };
-        }
+        return {
+          //   languages,
+          colorDepth,
+          screenWidth,
+          screenHeight,
+          dpr,
+          hardwareConcurrency,
+          timezone,
+          platform,
+          maxTouchPoints,
+          reducedMotion,
+          reducedTransparency,
+          //   dateTimeLocale,
+          //   theme,
+        };
+      }
 
-        function generateFingerprint() {
-            currentFingerprint = collectEnvSimple();
-            displayFingerprint(currentFingerprint);
-            document.getElementById('copyButton').style.display = 'inline-block';
-        }
+      function generateFingerprint() {
+        currentFingerprint = collectEnvSimple();
+        displayFingerprint(currentFingerprint);
+        document.getElementById("copyButton").style.display = "inline-block";
+      }
 
-        function displayFingerprint(fingerprint) {
-            const display = document.getElementById('fingerprintDisplay');
-            const labels = {
-                languages: 'Languages',
-                colorDepth: 'Color Depth',
-                screenWidth: 'Screen Width',
-                screenHeight: 'Screen Height',
-                dpr: 'Device Pixel Ratio',
-                hardwareConcurrency: 'Hardware Concurrency',
-                timezone: 'Timezone',
-                platform: 'Platform',
-                maxTouchPoints: 'Max Touch Points',
-                reducedMotion: 'Reduced Motion',
-                reducedTransparency: 'Reduced Transparency',
-                dateTimeLocale: 'DateTime Locale',
-                theme: 'Theme Preference'
-            };
+      function displayFingerprint(fingerprint) {
+        const display = document.getElementById("fingerprintDisplay");
+        const fingerprintJson = JSON.stringify(fingerprint, null, 2);
 
-            let html = '';
-            for (const [key, value] of Object.entries(fingerprint)) {
-                html += `
-                    <div class="fingerprint-item">
-                        <div class="fingerprint-label">${labels[key] || key}:</div>
-                        <div class="fingerprint-value">${value !== null ? value : 'null'}</div>
-                    </div>
-                `;
+        display.innerHTML = `<div class="fingerprint-json">${fingerprintJson}</div>`;
+        display.style.display = "block";
+      }
+
+      function copyFingerprint() {
+        if (!currentFingerprint) return;
+
+        const fingerprintText = JSON.stringify(currentFingerprint, null, 2);
+
+        navigator.clipboard
+          .writeText(fingerprintText)
+          .then(() => {
+            showFeedback("Fingerprint copied to clipboard!", "success");
+          })
+          .catch(() => {
+            // Fallback for older browsers
+            const textArea = document.createElement("textarea");
+            textArea.value = fingerprintText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+              document.execCommand("copy");
+              showFeedback("Fingerprint copied to clipboard!", "success");
+            } catch (err) {
+              showFeedback("Failed to copy fingerprint", "error");
             }
+            document.body.removeChild(textArea);
+          });
+      }
 
-            display.innerHTML = html;
-            display.style.display = 'block';
-        }
+      function showFeedback(message, type) {
+        const feedback = document.getElementById("copyFeedback");
+        feedback.textContent = message;
+        feedback.className = `copy-feedback ${type}`;
 
-        function copyFingerprint() {
-            if (!currentFingerprint) return;
+        setTimeout(() => {
+          feedback.className = "copy-feedback";
+        }, 3000);
+      }
 
-            const fingerprintText = JSON.stringify(currentFingerprint, null, 2);
-            
-            navigator.clipboard.writeText(fingerprintText).then(() => {
-                showFeedback('Fingerprint copied to clipboard!', 'success');
-            }).catch(() => {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = fingerprintText;
-                document.body.appendChild(textArea);
-                textArea.select();
-                try {
-                    document.execCommand('copy');
-                    showFeedback('Fingerprint copied to clipboard!', 'success');
-                } catch (err) {
-                    showFeedback('Failed to copy fingerprint', 'error');
-                }
-                document.body.removeChild(textArea);
-            });
-        }
-
-        function showFeedback(message, type) {
-            const feedback = document.getElementById('copyFeedback');
-            feedback.textContent = message;
-            feedback.className = `copy-feedback ${type}`;
-            
-            setTimeout(() => {
-                feedback.className = 'copy-feedback';
-            }, 3000);
-        }
-
-        // Generate fingerprint automatically on page load
-        window.addEventListener('load', generateFingerprint);
+      // Generate fingerprint automatically on page load
+      window.addEventListener("load", generateFingerprint);
     </script>
-</body>
+  </body>
 </html>
