@@ -249,6 +249,63 @@
             ? matchMedia("(prefers-reduced-transparency: reduce)").matches
             : false;
 
+        const prefersContrast =
+          typeof matchMedia === "function"
+            ? matchMedia("(prefers-contrast: more)").matches
+              ? "more"
+              : matchMedia("(prefers-contrast: less)").matches
+              ? "less"
+              : matchMedia("(prefers-contrast: no-preference)").matches
+              ? "no-preference"
+              : null
+            : null;
+
+        const invertedColors =
+          typeof matchMedia === "function"
+            ? matchMedia("(inverted-colors: inverted)").matches
+              ? "inverted"
+              : matchMedia("(inverted-colors: none)").matches
+              ? "none"
+              : null
+            : null;
+
+        const reducedData =
+          typeof matchMedia === "function" &&
+          matchMedia("(prefers-reduced-data: reduce)")
+            ? matchMedia("(prefers-reduced-data: reduce)").matches
+            : null;
+
+        const colorGamut =
+          typeof matchMedia === "function"
+            ? matchMedia("(color-gamut: rec2020)").matches
+              ? "rec2020"
+              : matchMedia("(color-gamut: p3)").matches
+              ? "p3"
+              : matchMedia("(color-gamut: srgb)").matches
+              ? "srgb"
+              : null
+            : null;
+
+        const hdr =
+          typeof matchMedia === "function"
+            ? matchMedia("(dynamic-range: high)").matches ||
+              matchMedia("(video-dynamic-range: high)").matches
+              ? "high"
+              : matchMedia("(dynamic-range: standard)").matches
+              ? "standard"
+              : null
+            : null;
+
+        const monochrome =
+          typeof matchMedia === "function"
+            ? matchMedia("(monochrome)").matches
+            : false;
+
+        const forcedColors =
+          typeof matchMedia === "function"
+            ? matchMedia("(forced-colors: active)").matches
+            : false;
+
         // const dateTimeLocale = (() => {
         //   try {
         //     return Intl.DateTimeFormat().resolvedOptions().locale || null;
@@ -278,6 +335,13 @@
           maxTouchPoints,
           reducedMotion,
           reducedTransparency,
+          prefersContrast,
+          invertedColors,
+          reducedData,
+          colorGamut,
+          hdr,
+          monochrome,
+          forcedColors,
           //   dateTimeLocale,
           //   theme,
         };

@@ -61,6 +61,16 @@ The following parameters are **actively collected** and included in the fingerpr
 
 - **Reduced Motion**: User's motion preference setting (`reducedMotion`) - _OS-level accessibility setting_
 - **Reduced Transparency**: User's transparency preference setting (`reducedTransparency`) - _system accessibility configuration_
+- **Prefers Contrast**: User's contrast preference (`prefersContrast`) - _more/less/no-preference accessibility setting_
+- **Inverted Colors**: Color inversion setting (`invertedColors`) - _inverted/none accessibility feature_
+- **Reduced Data**: Data saving preference (`reducedData`) - _network data conservation setting_
+- **Monochrome**: Monochrome display mode (`monochrome`) - _accessibility display setting_
+- **Forced Colors**: High contrast mode (`forcedColors`) - _Windows high contrast accessibility_
+
+**Display Capabilities** _(Hardware-based characteristics)_
+
+- **Color Gamut**: Display color space support (`colorGamut`) - _srgb/p3/rec2020 color space capability_
+- **HDR Support**: High dynamic range capability (`hdr`) - _high/standard dynamic range support_
 
 ### ❌ Excluded Parameters (Research-Identified Issues)
 

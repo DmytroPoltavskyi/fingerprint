@@ -40,7 +40,14 @@ You should see consistent fingerprint data like:
   "platform": "MacIntel",
   "maxTouchPoints": 0,
   "reducedMotion": false,
-  "reducedTransparency": false
+  "reducedTransparency": false,
+  "prefersContrast": "no-preference",
+  "invertedColors": "none",
+  "reducedData": null,
+  "colorGamut": "srgb",
+  "hdr": "standard",
+  "monochrome": false,
+  "forcedColors": false
 }
 ```
 
